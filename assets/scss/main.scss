@@ -1,0 +1,119 @@
+
+//@font-face {
+//  font-face-name: 'Inter';
+//  src: url("~assets/fonts/InterBlack/Inter-Black.ttf");
+//  font-weight: 900;
+//}
+
+//@font-face {
+//  font-family: 'icomoon';
+//  src:  url(~assets/fonts/icomoon.eot);
+//  src:  url(~assets/fonts/icomoon.eot) format('embedded-opentype'),
+//  url(~assets/fonts/icomoon.ttf) format('truetype'),
+//  url(~assets/fonts/icomoon.woff) format('woff'),
+//  url(~assets/fonts/icomoon.svg) format('svg');
+//  font-weight: normal;
+//  font-style: normal;
+//  font-display: block;
+//}
+
+[class^="icon-"], [class*=" icon-"] {
+  /* use !important to prevent issues with browser extensions that change fonts */
+  font-family: 'icomoon' !important;
+  speak: never;
+  font-style: normal;
+  font-weight: normal;
+  font-variant: normal;
+  text-transform: none;
+  line-height: 1;
+  /* Better Font Rendering =========== */
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  color: #FFF;
+}
+
+
+[class^="icon-"], [class*=" icon-"] {
+  /* use !important to prevent issues with browser extensions that change fonts */
+  font-family: 'icomoon' !important;
+  speak: never;
+  font-style: normal;
+  font-weight: normal;
+  font-variant: normal;
+  text-transform: none;
+  line-height: 1;
+
+  /* Better Font Rendering =========== */
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+body {
+  margin: 0 !important;
+}
+
+.fade-enter-active, .fade-leave-active {
+  transition: opacity .5s;
+}
+.fade-enter, .fade-leave-to {
+  opacity: 0;
+}
+
+.fade-fast-enter-active, .fade-fast-leave-active {
+  transition: opacity .3s;
+}
+.fade-enter, .fade-leave-to {
+  opacity: 0;
+}
+
+.b-toaster {
+  z-index: 999999;
+  max-width: none !important;
+}
+
+.custom-toast-width {
+  flex-basis: fit-content;
+  width: fit-content;
+  max-width: 500px;
+  min-width: 305px;
+  overflow-wrap: break-word;
+  word-wrap: break-word;
+  white-space: normal
+}
+
+.b-toast{
+  max-width: none !important;
+}
+
+.b-toaster.b-toaster-bottom-right .b-toaster-slot {
+  max-width: none !important;
+  width: fit-content;
+  min-width: 305px;
+}
+
+#WEB3_CONNECT_MODAL_ID > div {
+  z-index: 1000000;
+}
+
+// wallet connect //
+.walletconnect-modal__footer {
+  overflow: auto !important;
+  align-items: center !important;
+  justify-content: flex-start !important;
+}
+@include _767 {
+  .walletconnect-connect__button__text {
+    font-size: 12px !important;
+  }
+}
+
+.data-picker-field {
+  width: 100%;
+  height: 46px;
+  align-items: baseline;
+  padding-left: 10px;
+  background: #F7F8FA;
+  color: #353C47;
+  border-radius: 6px;
+  border: 1px solid transparent;
+}
