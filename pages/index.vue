@@ -2,68 +2,208 @@
   <div class="content">
     <div class="content__block content__block_first">
       <div class="content__banner">
-test
+        <div class="banner__info-block">
+          <div class="banner__text">
+            <span class="banner__title">Invest in Bitcoin with MicroStrategy</span>
+            <span class="banner__desc">MicroStrategy allows you to buy Bitcoin at a lower price and make a profit from it</span>
+          </div>
+          <div class="banner__buttons">
+            <button class="banner__button">Get started</button>
+            <a
+               href="https://twitter.com/microstrategy"
+               target="_blank">
+              <img src="~assets/img/icon/TwitterRed.svg"/>
+            </a>
+            <a
+               href="https://youtube.com/@microstrategy"
+               target="_blank">
+              <img src="~assets/img/icon/YoutubeRed.svg"/>
+            </a>
+            <a
+               href="https://www.tradingview.com/symbols/NASDAQ-MSTR/"
+               target="_blank">
+              <img src="~assets/img/icon/TrandingViewRed.svg"/>
+            </a>
+          </div>
+        </div>
+        <img src="~assets/img/app/banner.png" alt="banner"/>
       </div>
       <div class="content__crypto-line">
-        test
+        crypto line
       </div>
     </div>
     <div class="content__block">
-      test
+      <div class="content__32flex">
+        <div class="default__info-block default__info-block_column">
+          <img src="~assets/img/app/bitcoinBig.png" alt="bitcoin"/>
+          <div class="info-block__text info-block__text_column">
+            <div class="info-block__title">Bitcoin purchase</div>
+            <div class="info-block__desc">Our investment project MicroStrategy allows everyone to snag discounted Bitcoin before the bull cycle hits!</div>
+          </div>
+        </div>
+        <div class="content__32flex content__32flex_column">
+          <div class="default__info-block">
+            <img src="~assets/img/app/dollarBig.png" alt="dollars"/>
+            <div class="info-block__text info-block__text_column">
+              <div class="info-block__title">Earning method</div>
+              <div class="info-block__desc">By purchasing Bitcoin from MicroStrategy, you can sell it at the actual market price on the exchanges we work with and make a profit from it!</div>
+            </div>
+          </div>
+          <div class="default__info-block">
+            <img src="~assets/img/app/twoLinesBig.png" alt="twoLines"/>
+            <div class="info-block__text info-block__text_column">
+              <div class="info-block__title">Significant growth of Bitcoin</div>
+              <div class="info-block__desc">We are forecasting Bitcoin to reach $100,000 by the end of this year and offering the opportunity for advantageous purchases right now!</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="content__block content__block_platforms-img">
+      <img class="content__platform-img" src="~assets/img/app/coinbase.png" alt="coinbase"/>
+      <img class="content__platform-img" src="~assets/img/app/binance.png" alt="binance"/>
+      <img class="content__platform-img" src="~assets/img/app/bitmex.png" alt="bitmex"/>
+      <img class="content__platform-img" src="~assets/img/app/bybit.png" alt="bybit"/>
     </div>
     <div class="content__block">
-test
+      <div class="content__banner content__banner_column">
+        <div class="banner__head">
+          <span class="banner__title">About us</span>
+        </div>
+        <div class="banner__body">
+          <div class="banner__descriptions">
+            <span class="banner__description">Our analysts predict a rapid growth of Bitcoin, and we are currently investing maximum resources into it to expand our company.</span>
+            <span class="banner__description">Additionally, our task is to increase the number of investors in cryptocurrency from our microstrategy community.</span>
+          </div>
+          <div class="banner__red-block">
+            <div class="red-block__content">
+              <span class="red-block__title">12 333 BTC</span>
+              <span class="red-block__desc">The latest investment by our company in Bitcoin</span>
+            </div>
+            <div class="red-block__content">
+              <span class="red-block__title">2 000 BTC</span>
+              <span class="red-block__desc">An investment for subscribers to strengthen the community</span>
+            </div>
+          </div>
+        </div>
+      </div>
     </div>
     <div class="content__block">
-test
+      <div class="content__text-block">
+        <span class="content__title">Follow us</span>
+        <span class="content__desc">Subscribe to stay informed about all the latest announcements</span>
+      </div>
+      <div class="content__cards content__cards_column">
+        <a
+            href="https://twitter.com/microstrategy"
+            target="_blank"
+            class="content__card">
+          <img src="~assets/img/app/twitter.png"/>
+          <div class="card__text-block">
+            <span class="card__title">Twitter</span>
+            <span class="card__desc">In our Official Twitter, you can see the latest news related to the MicroStrategy project and stay up to date with all the events!</span>
+          </div>
+        </a>
+        <div class="content__cards">
+          <a
+              href="https://youtube.com/@microstrategy"
+              target="_blank"
+              class="content__card content__card_mini">
+            <img src="~assets/img/app/youtube.png"/>
+            <div class="card__text-block">
+              <span class="card__title">Youtube</span>
+              <span class="card__desc">Watch the latest interviews and forecasts from analysts on our channel</span>
+            </div>
+          </a>
+          <a
+              href="https://www.tradingview.com/symbols/NASDAQ-MSTR/"
+              target="_blank"
+              class="content__card content__card_mini">
+            <img src="~assets/img/app/traiding.png"/>
+            <div class="card__text-block">
+              <span class="card__title">TraidingView</span>
+              <span class="card__desc">Follow our assets on the TradingView platform.</span>
+            </div>
+          </a>
+        </div>
+      </div>
     </div>
-    <div class="content__block">
-test
+    <div class="content__block content__block_calculator">
+      calculator
     </div>
-<!--    <div class="content__block content__block_descriptions">-->
-<!--      <div-->
-<!--        v-for="(descriptionData, key) in descriptions"-->
-<!--        :key="key"-->
-<!--        class="content__descriptions">-->
-<!--        <img :src="descriptionData.src" :alt="descriptionData.name"/>-->
-<!--        <span class="content__text content__text_description content__text_small">{{ descriptionData.description }}</span>-->
-<!--      </div>-->
-<!--    </div>-->
+    <div class="content__block content__block_news">
+      <div class="news__head">
+        <span class="content__title">News</span>
+        <nuxt-link class="news__view-all" to="/news">
+          <span class="news__text-link">All news</span>
+          <img src="~assets/img/ui/Arrow-Right.svg"/>
+        </nuxt-link>
+      </div>
+      <div class="news__image-head">
+        <span class="image-head__text">Bitcoin is a bank in cyberspace, run by incorruptible software, offering a global, affordable, simple, & secure savings account to billions of people that don't have the option or desire to run their own hedge fund.</span>
+        <a class="news__view-all" href="https://youtube.com">
+          <span class="news__view-all-text">Watch the video</span>
+          <img style="width: 24px; height: 24px;" src="~assets/img/ui/Arrow-Right.svg"/>
+        </a>
+      </div>
+      <div class="news__content">
+        <div class="news__twit">
+          <blockquote class="twitter-tweet">
+            <p lang="en" dir="ltr">MicroStrategy has acquired an additional 12,333 BTC for ~$347.0 million at an average price of $28,136 per <a href="https://twitter.com/hashtag/bitcoin?src=hash&amp;ref_src=twsrc%5Etfw">#bitcoin</a>. As of 6/27/23 <a href="https://twitter.com/MicroStrategy?ref_src=twsrc%5Etfw">@MicroStrategy</a> hodls 152,333 <a href="https://twitter.com/search?q=%24BTC&amp;src=ctag&amp;ref_src=twsrc%5Etfw">$BTC</a> acquired for ~$4.52 billion at an average price of $29,668 per bitcoin. <a href="https://twitter.com/search?q=%24MSTR&amp;src=ctag&amp;ref_src=twsrc%5Etfw">$MSTR</a> <a href="https://t.co/joHo1gEnR0">https://t.co/joHo1gEnR0</a>
+            </p>&mdash; Michael Saylor⚡️ (@saylor) <a href="https://twitter.com/saylor/status/1674025857063571456?ref_src=twsrc%5Etfw">June 28, 2023</a>
+          </blockquote>
+        </div>
+        <div class="news__container news__container_small">
+          <div class="news__card news__card_big">
+            <newsCard
+                :card="specialCard"
+                mode="big"/>
+          </div>
+          <div
+              v-for="item in newsArrayOne"
+              class="news__card news__card_small">
+            <newsCard
+              :card="item"
+              mode="small"/>
+          </div>
+        </div>
+      </div>
+    </div>
   </div>
 </template>
 <script>
+import newsCard from "/components/newsCard"
 
 export default {
   name: 'Main',
+  components: {
+    newsCard
+  },
   data() {
     return {
-      // descriptions: [
-      //   {
-      //     src: require('~/assets/img/ui/profileActive.svg'),
-      //     name: 'profile',
-      //     description: this.$t('index.profileDesc')
-      //   },
-      //   {
-      //     src: require('~/assets/img/ui/linkActive.svg'),
-      //     name: 'link',
-      //     description: this.$t('index.linkDesc')
-      //   },
-      //   {
-      //     src: require('~/assets/img/ui/groupActive.svg'),
-      //     name: 'group',
-      //     description: this.$t('index.groupDesc')
-      //   },
-      //   {
-      //     src: require('~/assets/img/ui/designActive.svg'),
-      //     name: 'design',
-      //     description: this.$t('index.designDesc')
-      //   },
-      //   {
-      //     src: require('~/assets/img/ui/previewActive.svg'),
-      //     name: 'share',
-      //     description: this.$t('index.shareDesc')
-      //   }
-      // ]
+      newsArrayOne: [
+        {
+          img: require("assets/img/news/1.png"),
+          link: 'https://twitter.com/saylor/status/1670478311632302080',
+          author: 'Bloomberg HT',
+          title: 'The Appeal Of Bitcoin',
+          date: 'Jun 18, 2023'
+        },
+        {
+          img: require("assets/img/news/2.png"),
+          link: 'https://twitter.com/saylor/status/1668681012115546120',
+          author: 'Bloomberg',
+          title: 'Regulatory Clarity Is Going To Drive Bitcoin Adoption',
+          date: 'Jun 13, 2023'
+        }
+      ],
+      specialCard: {
+        img: require("assets/img/news/5.png"),
+        link: 'https://www.youtube.com/watch?v=v4na2pycrcc',
+        author: 'Peter H. Diamandis',
+        title: 'The Future Is Bitcoin',
+        date: 'Nov 3, 2022'
+      }
     }
   }
 };
@@ -74,9 +214,40 @@ export default {
   flex-direction: column;
   max-width: 1200px;
   width: 100%;
-  gap: 16px;
+  gap: 144px;
   padding-top: 32px;
   padding-bottom: 144px;
+  &__32flex {
+    width: 100%;
+    display: flex;
+    gap: 32px;
+    &_column {
+      flex-direction: column;
+    }
+  }
+  &__text-block {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+  }
+  &__title {
+    color: var(--typo-primary, #171A1C);
+
+    /* Header/Header H2 */
+    font-size: 48px;
+    font-style: normal;
+    font-weight: 700;
+    line-height: 64px;
+  }
+  &__desc {
+    color: var(--typo-secondary, #6C8093);
+
+    /* Text/Big Text Regular */
+    font-size: 20px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: 32px;
+  }
   &__block {
     display: flex;
     width: 100%;
@@ -84,13 +255,62 @@ export default {
     &_first {
       flex-direction: column;
     }
+    &_platforms-img {
+      align-items: center;
+      justify-content: space-between;
+    }
+    &_news {
+      flex-direction: column;
+      gap: 32px;
+    }
+  }
+  &__cards {
+    width: 100%;
+    max-width: 687px;
+    display: flex;
+    gap: 32px;
+    &_column {
+      flex-direction: column;
+    }
+  }
+  &__card {
+    text-decoration: none;
+    cursor: pointer;
+    padding: 16px 24px;
+    display: flex;
+    align-items: flex-start;
+    gap: 24px;
+    border-radius: 24px;
+    background: var(--bg-main, #FFF);
+    box-shadow: 0px 2px 8px 0px rgba(72, 88, 96, 0.10), 0px 2px 4px 0px rgba(72, 88, 96, 0.10), 0px 1px 8px 0px rgba(72, 88, 96, 0.10);
+    &_mini {
+      width: 50%;
+    }
+  }
+  &__card:hover {
+    .card__title {
+      border-bottom: 1px solid #171A1C;
+    }
   }
   &__banner {
     width: 100%;
     height: 500px;
 
+    display: flex;
+    justify-content: space-between;
+    padding: 40px 25px 0 56px;
+    align-items: center;
+
     border-radius: 40px;
     background: var(--bg-secondary, #F3F5F6);
+    &_column {
+      height: 100%;
+      flex-direction: column;
+      justify-content: flex-start;
+      align-items: flex-start;
+      padding: 48px 56px;
+      gap: 32px;
+    }
   }
   &__logo {
     width: 56px;
@@ -118,6 +338,240 @@ export default {
     display: flex;
     gap: 12px;
     align-items: flex-start;
+  }
+  &__platform-img {
+    height: 56px;
+  }
+}
+.banner {
+  &__buttons {
+    display: flex;
+    align-items: baseline;
+    gap: 16px;
+  }
+  &__button {
+    padding: 12px 24px;
+    border-radius: 12px;
+    color: var(--control-primary-typo, #FFF);
+    font-size: 20px;
+    font-style: normal;
+    font-weight: 700;
+    line-height: 32px;
+    border: none;
+    background: var(--control-primary-bg-default, #D9232E);
+  }
+  &__info-block {
+    display: flex;
+    flex-direction: column;
+    gap: 32px;
+  }
+  &__text {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+  }
+  &__title {
+    color: var(--typo-primary, #171A1C);
+
+    /* Header/Header H1 */
+    font-size: 56px;
+    font-style: normal;
+    font-weight: 700;
+    line-height: 72px;
+  }
+  &__desc {
+    color: var(--typo-secondary, #6C8093);
+
+    /* Text/Big Text Regular */
+    font-size: 20px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: 32px;
+  }
+  &__body {
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+  }
+  &__descriptions {
+    max-width: 528px;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+
+    color: var(--typo-primary, #171A1C);
+
+    /* Text/Big Text Regular */
+    font-size: 20px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: 32px;
+  }
+  &__red-block {
+    display: flex;
+    flex-direction: column;
+    gap: 40px;
+  }
+}
+.default {
+  &__info-block {
+    display: flex;
+    gap: 24px;
+    width: 100%;
+    padding: 24px 32px;
+
+    border-radius: 24px;
+    background: var(--bg-main, #FFF);
+    box-shadow: 0px 2px 4px 0px rgba(72, 88, 96, 0.10), 0px 4px 4px 0px rgba(72, 88, 96, 0.10), 0px 1px 8px 0px rgba(72, 88, 96, 0.10);
+    &_column {
+      max-width: 380px;
+      flex-direction: column;
+      justify-content: space-between;
+      align-items: flex-start;
+    }
+  }
+}
+.info-block {
+  &__text {
+    display: flex;
+    justify-content: space-between;
+    gap: 16px;
+    &_column {
+      flex-direction: column;
+    }
+  }
+  &__title {
+    color: var(--typo-primary, #171A1C);
+
+    /* Header/Header H4 */
+    font-size: 24px;
+    font-style: normal;
+    font-weight: 700;
+    line-height: 32px;
+  }
+  &__desc {
+    color: var(--typo-secondary, #6C8093);
+
+    /* Text/Small Text Regular */
+    font-size: 16px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: 24px;
+  }
+}
+.red-block {
+  &__content {
+    display: flex;
+    flex-direction: column;
+  }
+  &__title {
+    color: var(--typo-brand, #D9232E);
+    font-size: 64px;
+    font-style: normal;
+    font-weight: 700;
+    line-height: 80px;
+  }
+  &__desc {
+    color: var(--typo-secondary, #6C8093);
+
+    /* Text/Small Text Regular */
+    font-size: 16px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: 24px;
+  }
+}
+.card {
+  &__text-block {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+  }
+  &__title {
+    width: fit-content;
+    border-bottom: 1px solid #FFF;
+    color: var(--typo-primary, #171A1C);
+    font-size: 24px;
+    font-style: normal;
+    font-weight: 700;
+    line-height: 32px;
+  }
+  &__desc {
+    color: var(--typo-secondary, #6C8093);
+
+    /* Caption/Caption Big Regular */
+    font-size: 14px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: 20px;
+  }
+}
+.news {
+  &__image-head {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-end;
+
+    width: 100%;
+    height: 280px;
+    border-radius: 24px;
+    padding: 144px 32px 40px 32px;
+    background: url('assets/img/news/background.jpg') no-repeat;
+    background-size: cover;
+  }
+  &__head {
+    display: flex;
+    align-items: baseline;
+    justify-content: space-between;
+  }
+  &__text-link {
+    color: var(--control-ghost-typo, #D9232E);
+    font-size: 20px;
+
+    font-style: normal;
+    font-weight: 700;
+    line-height: 32px;
+  }
+  &__view-all {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    padding: 8px 16px;
+    border-radius: 8px;
+    background: var(--control-ghost-bg-default, #FFF);
+
+    text-decoration: none;
+  }
+  &__view-all-text {
+    padding-top: 3px;
+    color: var(--control-ghost-typo, #D9232E);
+
+    /* Button/Small Button Text */
+    font-size: 16px;
+    font-style: normal;
+    font-weight: 600;
+    line-height: 24px;
+  }
+  &__content {
+    display: flex;
+    gap: 32px;
+  }
+  &__container {
+    display: flex;
+    flex-direction: column;
+    gap: 32px;
+  }
+}
+.image-head {
+  &__text {
+    max-width: 720px;
+    color: var(--bg-main, #FFF);
+    /* Text/Big Text Medium */
+    font-size: 20px;
+    font-style: normal;
+    font-weight: 500;
+    line-height: 32px;
   }
 }
 </style>
