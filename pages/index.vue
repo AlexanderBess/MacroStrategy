@@ -29,7 +29,11 @@
         <img src="~assets/img/app/banner.png" alt="banner"/>
       </div>
       <div class="content__crypto-line">
-        crypto line
+        <div class="marquee-container">
+          <p class="marquee">
+            LONDON - PARIS - SYDNEY - TOKYO - NEW YORK - BERLIN - ROME
+          </p>
+        </div>
       </div>
     </div>
     <div class="content__block">
@@ -129,7 +133,30 @@
       </div>
     </div>
     <div class="content__block content__block_calculator">
-      calculator
+      <div class="calculator__form">
+        <div class="form__title">Calculator</div>
+        <input class="form__title"/>
+        <input class="form__title"/>
+      </div>
+      <div class="calculator__results-block">
+        <div class="results-block__info">
+          <span class="results-block__title">Calculation results</span>
+          <div
+              v-for="item in calculationResults"
+              class="results-block__data">
+            <span class="results-block__name">{{item.name}}</span>
+            <span class="results-block__value">{{item.value}}</span>
+          </div>
+        </div>
+        <div class="results-block__result">
+          <span class="results-block__name">You will get:</span>
+          <span class="results-block__bigValue">0.0000001 BTC</span>
+        </div>
+        <div class="results-block__buttons">
+          <button class="button button__red">Buy bitcoin</button>
+          <button class="button button__white">Increase the discount<img src="~assets/img/ui/Arrow-Right.svg"/></button>
+        </div>
+      </div>
     </div>
     <div class="content__block content__block_news">
       <div class="news__head">
@@ -171,7 +198,7 @@
     </div>
   </div>
 </template>
-<script>
+<script async src="https://platform.twitter.com/widgets.js" charset="utf-8">
 import newsCard from "/components/newsCard"
 
 export default {
@@ -181,6 +208,20 @@ export default {
   },
   data() {
     return {
+      calculationResults: [
+        {
+          name: 'Bitcoin exchange rate:',
+          value: '$30 000'
+        },
+        {
+          name: 'Your discount:',
+          value: '27%'
+        },
+        {
+          name: 'You will invest:',
+          value: '0.001 ETH'
+        }
+      ],
       newsArrayOne: [
         {
           img: require("assets/img/news/1.png"),
@@ -261,6 +302,9 @@ export default {
     }
     &_news {
       flex-direction: column;
+      gap: 32px;
+    }
+    &_calculator {
       gap: 32px;
     }
   }
@@ -572,6 +616,152 @@ export default {
     font-style: normal;
     font-weight: 500;
     line-height: 32px;
+  }
+}
+.calculator {
+  &__form {
+    width: 100%;
+    max-width: 487px;
+    display: flex;
+    flex-direction: column;
+    height: max-content;
+    gap: 16px;
+    padding: 32px;
+    border-radius: 32px;
+    background: var(--bg-main, #FFF);
+    box-shadow: 0px 2px 8px 0px rgba(72, 88, 96, 0.10), 0px 2px 4px 0px rgba(72, 88, 96, 0.10), 0px 1px 8px 0px rgba(72, 88, 96, 0.10);
+  }
+  &__results-block {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    padding: 48px 56px;
+    gap: 32px;
+    border-radius: 32px;
+    background: var(--bg-secondary, #F3F5F6);
+    &__title {
+      color: var(--typo-primary, #171A1C);
+
+      /* Header/Header H2 */
+      font-size: 48px;
+      font-style: normal;
+      font-weight: 700;
+      line-height: 64px;
+    }
+  }
+}
+.form {
+  &__title {
+    color: var(--typo-primary, #171A1C);
+
+    font-size: 48px;
+    font-style: normal;
+    font-weight: 700;
+    line-height: 64px;
+  }
+}
+.results-block {
+  &__info {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+  }
+  &__result {
+    display: flex;
+    flex-direction: column;
+  }
+  &__title {
+    color: var(--typo-primary, #171A1C);
+
+    /* Header/Header H3 */
+    font-size: 32px;
+    font-style: normal;
+    font-weight: 700;
+    line-height: 40px;
+  }
+  &__name {
+    color: var(--typo-secondary, #6C8093);
+
+    font-size: 20px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: 32px;
+  }
+  &__value {
+    color: var(--typo-primary, #171A1C);
+
+    font-size: 20px;
+    font-style: normal;
+    font-weight: 600;
+    line-height: 32px;
+  }
+  &__bigValue {
+    color: var(--typo-brand, #D9232E);
+
+    font-size: 64px;
+    font-style: normal;
+    font-weight: 700;
+    line-height: 80px;
+  }
+  &__buttons {
+    display: flex;
+    gap: 24px;
+  }
+}
+.button {
+  padding: 12px 24px;
+  border-radius: 12px;
+  border: 0;
+  &__red {
+    color: var(--control-primary-typo, #FFF);
+    font-size: 20px;
+    font-style: normal;
+    font-weight: 700;
+    line-height: 32px;
+
+    background: var(--control-primary-bg-default, #D9232E);
+  }
+  &__white {
+    display: flex;
+
+    color: var(--control-ghost-typo, #D9232E);
+    font-size: 20px;
+    font-style: normal;
+    font-weight: 700;
+    line-height: 32px;
+
+    background: var(--control-ghost-bg-default, #FFF);
+  }
+}
+.marquee-container{
+  display: flex;
+  align-items: center;
+  background: #25284c;
+  overflow: hidden;
+}
+.marquee{
+  font-size: 100px;
+  line-height: 1.3;
+  font-family: sans-serif;
+  padding: 24px 0;
+  color: #fff;
+  white-space: nowrap;
+  animation: marquee 3.5s infinite linear; /* notice the infinite */
+}
+.marquee:after{
+  content: "LONDON - PARIS - SYDNEY - TOKYO - NEW YORK - BERLIN - ROME";
+}
+@keyframes marquee{
+  0% {
+    transform: translateX(0)
+  }
+  100% {
+    transform: translateX(-50%)
+  }
+}
+@include _1199 {
+  .content {
+    padding: 32px 16px 72px 16px;
   }
 }
 </style>

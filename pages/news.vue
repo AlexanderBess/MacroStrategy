@@ -1,8 +1,67 @@
 <template>
-
+  <div class="news">
+    <div class="news__head">
+      <span class="news__title">News</span>
+    </div>
+    <div class="news__image-head">
+      <span class="image-head__text">Bitcoin is a bank in cyberspace, run by incorruptible software, offering a global, affordable, simple, & secure savings account to billions of people that don't have the option or desire to run their own hedge fund.</span>
+      <a class="news__view-all" href="https://youtube.com">
+        <span class="news__view-all-text">Watch the video</span>
+        <img style="width: 24px; height: 24px;" src="~assets/img/ui/Arrow-Right.svg"/>
+      </a>
+    </div>
+    <div class="news__content">
+      <div class="news__twit">
+        <blockquote class="twitter-tweet">
+          <p lang="en" dir="ltr">MicroStrategy has acquired an additional 12,333 BTC for ~$347.0 million at an average price of $28,136 per <a href="https://twitter.com/hashtag/bitcoin?src=hash&amp;ref_src=twsrc%5Etfw">#bitcoin</a>. As of 6/27/23 <a href="https://twitter.com/MicroStrategy?ref_src=twsrc%5Etfw">@MicroStrategy</a> hodls 152,333 <a href="https://twitter.com/search?q=%24BTC&amp;src=ctag&amp;ref_src=twsrc%5Etfw">$BTC</a> acquired for ~$4.52 billion at an average price of $29,668 per bitcoin. <a href="https://twitter.com/search?q=%24MSTR&amp;src=ctag&amp;ref_src=twsrc%5Etfw">$MSTR</a> <a href="https://t.co/joHo1gEnR0">https://t.co/joHo1gEnR0</a>
+          </p>&mdash; Michael Saylor⚡️ (@saylor) <a href="https://twitter.com/saylor/status/1674025857063571456?ref_src=twsrc%5Etfw">June 28, 2023</a>
+        </blockquote>
+      </div>
+      <div class="news__container news__container_small">
+        <div
+            v-for="item in newsArrayOne"
+            class="news__card news__card_small">
+          <newsCard
+              :card="item"
+              mode="small"/>
+        </div>
+      </div>
+    </div>
+    <div class="news__content">
+<!--      <div class="news__container news__container_small">-->
+        <newsCard
+            v-for="item in newsArrayHalfTwo"
+            :card="item"
+            mode="big"/>
+<!--      </div>-->
+    </div>
+    <div class="news__content news__content_wrap">
+<!--      <div class="news__container news__container_small">-->
+        <newsCard
+          v-for="item in newsArrayTwo"
+          :card="item"/>
+<!--      </div>-->
+    </div>
+    <div class="news__content">
+      <newsCard
+        :card="newsArrayHalfThree"
+        mode="big"/>
+      <div class="news__container news__container_small">
+        <newsCard
+          v-for="item in newsArrayThree"
+          :card="item"
+          mode="small"/>
+      </div>
+    </div>
+    <div class="news__content">
+      <newsCard
+          v-for="item in newsArrayFour"
+          :card="item"/>
+    </div>
+  </div>
 </template>
 
-<script>
+<script async src="https://platform.twitter.com/widgets.js" charset="utf-8">
 export default {
   name: "news",
   data() {
@@ -37,7 +96,7 @@ export default {
           date: 'Feb 2, 2023'
         }
       ],
-      newsArrayTwo: [
+      newsArrayHalfTwo: [
         {
           img: require("assets/img/news/5.png"),
           link: 'https://www.youtube.com/watch?v=v4na2pycrcc',
@@ -51,7 +110,9 @@ export default {
           author: 'The Bitcoin Layer',
           title: 'Bitcoin As Property',
           date: 'Oct 21, 2022'
-        },
+        }
+      ],
+      newsArrayTwo: [
         {
           img: require("assets/img/news/7.png"),
           link: 'https://www.youtube.com/watch?v=J38-PQ6X8HI',
@@ -95,14 +156,14 @@ export default {
           date: 'Jan 18, 2023'
         }
       ],
+      newsArrayHalfThree: {
+        img: require("assets/img/news/13.png"),
+        link: 'https://www.youtube.com/watch?v=dXix6OIU1hw',
+        author: 'MicroStrategy',
+        title: 'Bitcoin is Digital Energy - Michael Saylor at the MIT Bitcoin Expo',
+        date: 'May 7, 2022'
+      },
       newsArrayThree: [
-        {
-          img: require("assets/img/news/13.png"),
-          link: 'https://www.youtube.com/watch?v=dXix6OIU1hw',
-          author: 'MicroStrategy',
-          title: 'Bitcoin is Digital Energy - Michael Saylor at the MIT Bitcoin Expo',
-          date: 'May 7, 2022'
-        },
         {
           img: require("assets/img/news/14.png"),
           link: 'https://twitter.com/saylor/status/1592609346277363713?s=20',
@@ -153,6 +214,91 @@ export default {
 }
 </script>
 
-<style scoped>
+<style lang="scss" scoped>
+.news {
+  display: flex;
+  flex-direction: column;
+  max-width: 1200px;
+  width: 100%;
+  gap: 32px;
+  padding-top: 32px;
+  padding-bottom: 144px;
+  &__title {
+    color: var(--typo-primary, #171A1C);
 
+    /* Header/Header H2 */
+    font-size: 48px;
+    font-style: normal;
+    font-weight: 700;
+    line-height: 64px;
+  }
+  &__image-head {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-end;
+
+    width: 100%;
+    height: 280px;
+    border-radius: 24px;
+    padding: 144px 32px 40px 32px;
+    background: url('assets/img/news/background.jpg') no-repeat;
+    background-size: cover;
+  }
+  &__head {
+    display: flex;
+    align-items: baseline;
+    justify-content: space-between;
+  }
+  &__text-link {
+    color: var(--control-ghost-typo, #D9232E);
+    font-size: 20px;
+
+    font-style: normal;
+    font-weight: 700;
+    line-height: 32px;
+  }
+  &__view-all {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    padding: 8px 16px;
+    border-radius: 8px;
+    background: var(--control-ghost-bg-default, #FFF);
+
+    text-decoration: none;
+  }
+  &__view-all-text {
+    padding-top: 3px;
+    color: var(--control-ghost-typo, #D9232E);
+
+    /* Button/Small Button Text */
+    font-size: 16px;
+    font-style: normal;
+    font-weight: 600;
+    line-height: 24px;
+  }
+  &__content {
+    display: flex;
+    gap: 32px;
+    &_wrap {
+      flex-wrap: wrap;
+    }
+  }
+  &__container {
+    display: flex;
+    flex-direction: column;
+    gap: 32px;
+  }
+}
+.image-head {
+  &__text {
+    max-width: 720px;
+    color: var(--bg-main, #FFF);
+    /* Text/Big Text Medium */
+    font-size: 20px;
+    font-style: normal;
+    font-weight: 500;
+    line-height: 32px;
+  }
+}
 </style>

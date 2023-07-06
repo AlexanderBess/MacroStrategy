@@ -4,7 +4,7 @@
 
 <script>
 export default {
-  name: "calculator"
+  name: "buyBitcoin"
 }
 </script>
 

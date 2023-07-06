@@ -3,7 +3,7 @@
     :href="card.link"
     target="_blank"
     :class="`news-card news-card__${mode}`">
-    <img :src="card.img" :alt="card.title"/>
+    <img class="news-card__img" :src="card.img" :alt="card.title"/>
     <div class="news-card__data">
       <span class="news-card__author">{{ card.author }}</span>
       <span class="news-card__title" :class="`news-card__title_${mode}`">{{ card.title }}</span>
@@ -32,10 +32,15 @@ export default {
 .news-card {
   display: flex;
   flex-direction: column;
+  max-width: 378px;
   gap: 16px;
   text-decoration: none;
   &__small {
+    max-width: 100%;
     flex-direction: row;
+  }
+  &__big {
+    max-width: 100%;
   }
   &__data {
     display: flex;
@@ -54,13 +59,13 @@ export default {
   &__title {
     color: var(--typo-primary, #171A1C);
     /* Header/Header H3 */
-    font-size: 32px;
+    font-size: 24px;
     font-style: normal;
     font-weight: 700;
-    line-height: 40px;
-    &_small {
-      font-size: 24px;
-      line-height: 32px;
+    line-height: 32px;
+    &_big {
+      font-size: 32px;
+      line-height: 40px;
     }
   }
   &__date {
@@ -71,6 +76,9 @@ export default {
     font-style: normal;
     font-weight: 500;
     line-height: 24px;
+  }
+  &__img {
+    height: max-content;
   }
 }
 </style>
