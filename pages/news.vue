@@ -238,6 +238,10 @@ export default {
     font-weight: 700;
     line-height: 64px;
   }
+  &__post {
+    display: flex;
+    gap: 32px;
+  }
   &__image-head {
     display: flex;
     justify-content: space-between;
@@ -325,6 +329,10 @@ export default {
         flex-direction: column;
       }
     }
+    &__post {
+      flex-wrap: wrap;
+      justify-content: center;
+    }
   }
 }
 @include _767 {
@@ -336,15 +344,27 @@ export default {
       gap: 32px;
       padding: 32PX 24PX;
     }
+    &__post {
+      justify-content: flex-start;
+    }
   }
 }
 @include _575 {
   .news {
     &__post {
+      display: block;
       max-width: 378px;
     }
     &__image-head {
       height: auto;
+    }
+  }
+}
+@include _380 {
+  .news {
+    &__post {
+      display: block;
+      max-width: 340px;
     }
   }
 }

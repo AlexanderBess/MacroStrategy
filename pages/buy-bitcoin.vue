@@ -5,11 +5,13 @@
       <div class="calculator__inputs">
         <div class="form__title">Payment form</div>
         <div class="form__input-block">
-          <span class="form__input-label">Amount of investment</span>
+          <span class="form__input-label">Amount of investment (from 50$ to 5000$)</span>
           <input
               v-model="customValue"
+              :class="showError ? 'form__input_error' : ''"
               class="form__input"
               @change="calculatedPrice"/>
+          <span class="input__error" v-show="showError">Incorrect values</span>
         </div>
         <div class="form__input-block">
           <span class="form__input-label">Currency of purchase</span>
@@ -66,17 +68,12 @@ export default {
         name:'ETH',
         icon: require('assets/img/icon/ETH.svg')
       },
-      customValue: 0.001,
+      showError: false,
+      customValue: 0.1,
       calcBTC: 0.000001,
       customCoinType: {
         name: 'ETH'
       },
-      coinsLine: [
-        {
-          icon: '',
-          price: '$30000'
-        },
-      ],
       coinsForDD: [
         {
           name: 'ETH',
@@ -117,7 +114,7 @@ export default {
       calculationResults: [
         {
           name: 'Bitcoin exchange rate:',
-          value: '$30 000'
+          value: '...loading'
         },
         {
           name: 'Your discount:',
@@ -129,7 +126,7 @@ export default {
         },
         {
           name: 'You will get:',
-          value: '0.0000001 BTC'
+          value: '...loading'
         }
       ]
     }
@@ -140,33 +137,49 @@ export default {
       coinsPrice: 'getCoinsPrice'
     })
   },
+  async beforeMount() {
+      await this.$store.dispatch('getCoinsData');
+      await this.$store.dispatch('getCoinsPrice');
+  },
   methods: {
     displayToKey(value) {
       this.customCoinType = value;
       this.calculationResults[2].value = `${this.customValue} ${this.customCoinType.name}`;
-      this.btcPrice();
+      this.calculationResults[3].value = this.btcPrice();
     },
     calculatedPrice() {
-      this.calculationResults[0].value = `$${this.coinsPrice.BTC}` || '30000';
-      this.calculationResults[2].value = `${this.customValue} ${this.customCoinType.name}` || 'asd';
-      this.btcPrice();
+      this.formingResults();
     },
     btcPrice() {
-      this.calcBTC = ((this.coinsPrice[this.customCoinType.name] * this.customValue) + ((this.coinsPrice[this.customCoinType.name] * this.customValue) * 0.27)) / this.coinsPrice.BTC;
+      const value = ((this.coinsPrice[this.customCoinType.name] * this.customValue) + ((this.coinsPrice[this.customCoinType.name] * this.customValue) * 0.27)) / this.coinsPrice.BTC;
+      return `${value.toFixed(8)} BTC`;
     },
     openBuyBitcoin() {
       this.showBuyBitcoin = !this.showDiscount;
     },
     closeBuyBitcoin() {
       this.showBuyBitcoin = false;
+    },
+    formingResults() {
+      this.calculationResults[0].value = `$${this.coinsPrice.BTC}`;
+      this.calculationResults[2].value = `${this.customValue} ${this.customCoinType.name}`;
+      this.calculationResults[3].value = this.btcPrice();
     }
   },
   watch: {
     coinsPrice: {
       handler() {
-        this.calculationResults[0].value = `$${this.coinsPrice.BTC}`;
-        this.calculationResults[2].value = `${this.customValue} ${this.customCoinType.name}`;
-        this.btcPrice();
+        this.formingResults();
+      }
+    },
+    customValue: {
+      handler() {
+        this.formingResults();
+        if (this.coinsPrice[this.customCoinType.name] * this.customValue < 50 || this.coinsPrice[this.customCoinType.name] * this.customValue > 5000) {
+          this.showError = true;
+        } else if (this.showError) {
+          this.showError = false;
+        }
       }
     }
   }
@@ -219,6 +232,9 @@ export default {
     font-style: normal;
     font-weight: 400;
     line-height: 32px;
+    &_error {
+      border: 2px solid rgba(217, 35, 46, 0.5);
+    }
   }
   &__input-block {
     display: flex;
@@ -264,6 +280,13 @@ export default {
       font-weight: 600;
     }
   }
+}
+.input__error {
+  color: var(--typo-brand, #D9232E);
+  font-size: 16px;
+  font-style: normal;
+  font-weight: 500;
+  line-height: 24px;
 }
 .discount-info {
   height: max-content;

@@ -30,15 +30,6 @@
         </div>
         <img class="banner__image" src="~assets/img/app/banner.png" alt="banner"/>
       </div>
-<!--      <div class="content__crypto-line">-->
-<!--        <div class="marquee-container">-->
-<!--          <p class="marquee">-->
-<!--            <span v-for="item in coinsData">-->
-<!--              {{item}}-->
-<!--            </span>-->
-<!--          </p>-->
-<!--        </div>-->
-<!--      </div>-->
     </div>
     <div class="content__block">
       <div class="content__32flex">
@@ -140,11 +131,13 @@
       <div class="calculator__form">
         <div class="form__title">Calculator</div>
         <div class="form__input-block">
-          <span class="form__input-label">Amount of investment</span>
+          <span class="form__input-label">Amount of investment (from 50$ to 5000$)</span>
           <input
               v-model="customValue"
+              :class="showError ? 'form__input_error' : ''"
               class="form__input"
               @change="calculatedPrice"/>
+          <span class="input__error" v-show="showError">Incorrect values</span>
         </div>
         <div class="form__input-block">
           <span class="form__input-label">Currency of purchase</span>
@@ -249,20 +242,53 @@ export default {
     return {
       showDiscount: false,
       showBuyBitcoin: false,
+      showError: false,
       defaultSelector: {
         name:'ETH',
         icon: require('assets/img/icon/ETH.svg')
       },
-      customValue: 0.001,
+      customValue: 0.1,
       calcBTC: 0.000001,
       customCoinType: {
         name: 'ETH'
       },
       coinsLine: [
         {
-          icon: '',
+          icon: require('assets/img/icon/BTC.svg'),
           price: '$30000'
         },
+        {
+          icon: require('assets/img/icon/ETH.svg'),
+          price: '$1900'
+        },
+        {
+          icon: require('assets/img/icon/USDT.svg'),
+          price: '$1.1'
+        },
+        {
+          icon: require('assets/img/icon/BNB.svg'),
+          price: '$244.85'
+        },
+        {
+          icon: require('assets/img/icon/USDC.svg'),
+          price: '$1.01'
+        },
+        {
+          icon: require('assets/img/icon/XRP.svg'),
+          price: '$0.483'
+        },
+        {
+          icon: require('assets/img/icon/ADA.svg'),
+          price: '$0.289'
+        },
+        {
+          icon: require('assets/img/icon/LTC.svg'),
+          price: '$110'
+        },
+        {
+          icon: require('assets/img/icon/TRX.svg'),
+          price: '$0.233'
+        }
       ],
       coinsForDD: [
         {
@@ -304,7 +330,7 @@ export default {
       calculationResults: [
         {
           name: 'Bitcoin exchange rate:',
-          value: '$30 000'
+          value: '...loading'
         },
         {
           name: 'Your discount:',
@@ -362,7 +388,8 @@ export default {
       this.btcPrice();
     },
     btcPrice() {
-      this.calcBTC = ((this.coinsPrice[this.customCoinType.name] * this.customValue) + ((this.coinsPrice[this.customCoinType.name] * this.customValue) * 0.27)) / this.coinsPrice.BTC;
+      const value = ((this.coinsPrice[this.customCoinType.name] * this.customValue) + ((this.coinsPrice[this.customCoinType.name] * this.customValue) * 0.27)) / this.coinsPrice.BTC;
+      this.calcBTC = value.toFixed(8);
     },
     openDiscount() {
       this.showDiscount = !this.showDiscount;
@@ -383,6 +410,18 @@ export default {
         this.calculationResults[0].value = `$${this.coinsPrice.BTC}`;
         this.calculationResults[2].value = `${this.customValue} ${this.customCoinType.name}`;
         this.btcPrice();
+      }
+    },
+    customValue: {
+      handler() {
+        this.calculationResults[0].value = `$${this.coinsPrice.BTC}`;
+        this.calculationResults[2].value = `${this.customValue} ${this.customCoinType.name}`;
+        this.btcPrice();
+        if (this.coinsPrice[this.customCoinType.name] * this.customValue < 50 || this.coinsPrice[this.customCoinType.name] * this.customValue > 5000) {
+          this.showError = true;
+        } else if (this.showError) {
+          this.showError = false;
+        }
       }
     }
   }
@@ -816,6 +855,9 @@ export default {
     font-style: normal;
     font-weight: 400;
     line-height: 32px;
+    &_error {
+      border: 2px solid rgba(217, 35, 46, 0.5);
+    }
   }
   &__input-block {
     display: flex;
@@ -867,7 +909,7 @@ export default {
   }
   &__bigValue {
     display: flex;
-    gap: 6px;
+    gap: 12px;
     flex-wrap: nowrap;
 
     color: var(--typo-brand, #D9232E);
@@ -886,6 +928,13 @@ export default {
   white-space: nowrap; /* Запрещаем перенос строк */
   overflow: hidden; /* Обрезаем все, что не помещается в область */
   text-overflow: ellipsis;
+}
+.input__error {
+  color: var(--typo-brand, #D9232E);
+  font-size: 16px;
+  font-style: normal;
+  font-weight: 500;
+  line-height: 24px;
 }
 .button {
   padding: 12px 24px;

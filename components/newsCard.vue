@@ -95,4 +95,9 @@ export default {
     }
   }
 }
+@include _380 {
+  .news-card {
+    max-width: 340px;
+  }
+}
 </style>

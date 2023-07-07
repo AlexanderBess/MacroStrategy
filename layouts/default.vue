@@ -2,6 +2,7 @@
   <div class="primary">
     <div class="primary__template template">
       <div class="template__header header">
+        <iframe src="https://widget.coinlib.io/widget?type=horizontal_v2&amp;theme=light&amp;pref_coin_id=1505&amp;invert_hover=no" width="100%" height="36px" scrolling="auto" marginwidth="0" marginheight="0" frameborder="0" border="0" style="border:0;margin:0;padding:0;"></iframe>
         <div class="header__container">
           <nuxt-link
             class="header__title"
@@ -78,7 +79,6 @@
                   to="/news">News</nuxt-link>
             </div>
             <div class="buttons__block">
-<!--              <a><img/></a>-->
               <a target="_blank" href="https://twitter.com/microstrategy"><img src="~assets/img/icon/TwitterRed.svg"/></a>
               <a target="_blank" href="https://youtube.com/@microstrategy"><img src="~assets/img/icon/YoutubeRed.svg"/></a>
               <a target="_blank" href="https://www.tradingview.com/symbols/NASDAQ-MSTR/"><img src="~assets/img/icon/TrandingViewRed.svg"/></a>
@@ -122,11 +122,11 @@ export default {
   overflow: auto;
   &__header {
     display: flex;
-    flex-direction: row;
+    flex-direction: column;
     justify-content: center;
     align-items: center;
     padding: 16px;
-    gap: 4px;
+    gap: 8px;
 
     background: #FFF;
     box-shadow: 0px 2px 2px 0px rgba(72, 88, 96, 0.10);
