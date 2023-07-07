@@ -81,4 +81,18 @@ export default {
     height: max-content;
   }
 }
+@include _575 {
+  .news-card__small {
+    .news-card__img {
+      display: none;
+    }
+  }
+  .news-card {
+    &__title {
+      &_big {
+        font-size: 24px;
+      }
+    }
+  }
+}
 </style>

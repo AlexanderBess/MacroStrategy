@@ -1,7 +1,6 @@
 export default {
     async getCoinsData({commit}) {
         try {
-            console.log(process.env.API_KEY);
             const result = await this.$axios.$post(`/price?fsym=USD&tsyms=BTC,ETH,LTC,USDT,BNB,ADA,TRX,XRP&api_key=${process.env.API_KEY}`);
             commit('setCoinsData', result);
             return result;

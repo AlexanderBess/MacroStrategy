@@ -1,7 +1,7 @@
 <template>
   <div class="content">
     <div class="content__block content__block_first">
-      <div class="content__banner">
+      <div class="content__banner content__banner_first">
         <div class="banner__info-block">
           <div class="banner__text">
             <span class="banner__title">Invest in Bitcoin with MicroStrategy</span>
@@ -28,7 +28,7 @@
             </a>
           </div>
         </div>
-        <img src="~assets/img/app/banner.png" alt="banner"/>
+        <img class="banner__image" src="~assets/img/app/banner.png" alt="banner"/>
       </div>
 <!--      <div class="content__crypto-line">-->
 <!--        <div class="marquee-container">-->
@@ -74,7 +74,7 @@
       <img class="content__platform-img" src="~assets/img/app/bybit.png" alt="bybit"/>
     </div>
     <div class="content__block">
-      <div class="content__banner content__banner_column">
+      <div class="content__banner content__banner_about-us content__banner_column">
         <div class="banner__head">
           <span class="banner__title">About us</span>
         </div>
@@ -96,7 +96,7 @@
         </div>
       </div>
     </div>
-    <div class="content__block">
+    <div class="content__block content__block_follow-us">
       <div class="content__text-block">
         <span class="content__title">Follow us</span>
         <span class="content__desc">Subscribe to stay informed about all the latest announcements</span>
@@ -168,7 +168,7 @@
         </div>
         <div class="results-block__result">
           <span class="results-block__name">You will get:</span>
-          <span class="results-block__bigValue">{{ calcBTC }} BTC</span>
+          <div class="results-block__bigValue"><span class="bigValue">{{ calcBTC }}</span><span>BTC</span></div>
         </div>
         <div class="results-block__buttons">
           <button
@@ -773,6 +773,7 @@ export default {
   }
   &__results-block {
     width: 100%;
+    max-width: 681px;
     display: flex;
     flex-direction: column;
     padding: 48px 56px;
@@ -859,6 +860,10 @@ export default {
     line-height: 32px;
   }
   &__bigValue {
+    display: flex;
+    gap: 6px;
+    flex-wrap: nowrap;
+
     color: var(--typo-brand, #D9232E);
 
     font-size: 64px;
@@ -870,6 +875,11 @@ export default {
     display: flex;
     gap: 24px;
   }
+}
+.bigValue {
+  white-space: nowrap; /* Запрещаем перенос строк */
+  overflow: hidden; /* Обрезаем все, что не помещается в область */
+  text-overflow: ellipsis;
 }
 .button {
   padding: 12px 24px;
@@ -931,6 +941,223 @@ export default {
       flex-direction: column;
       align-items: flex-start;
       padding: 72px 32px 40px 32px;
+    }
+  }
+}
+@include _991 {
+  .content {
+    gap: 96px;
+    &__32flex {
+      flex-direction: column;
+    }
+    &__desc {
+      max-width: 486px;
+    }
+    &__block {
+      flex-wrap: wrap;
+      //&_follow-us {
+      //  flex-direction: column;
+      //}
+      &_calculator {
+        justify-content: center;
+      }
+    }
+    &__cards {
+      max-width: 100%;
+    }
+    &__banner {
+      height: 333px;
+      &_about-us {
+        height: auto;
+      }
+    }
+  }
+  .default {
+    &__info-block {
+      align-items: flex-start;
+      &_column {
+        max-width: 100%;
+        flex-direction: row;
+        justify-content: flex-start;
+        gap: 24px;
+      }
+    }
+  }
+  .banner {
+    &__image {
+      max-width: 368px;
+      width: 100%;
+    }
+    &__title {
+      font-size: 32px;
+      font-weight: 700;
+      line-height: 40px;
+    }
+    &__body {
+      flex-direction: column;
+      gap: 32px;
+    }
+    &__descriptions {
+      max-width: 100%;
+    }
+    &__red-block {
+      flex-direction: row;
+      justify-content: space-between;
+    }
+  }
+  .calculator {
+    &__form {
+      max-width: 100%;
+    }
+    &__results-block {
+      max-width: 836px;
+    }
+  }
+  .news {
+    &__content {
+      flex-direction: column;
+    }
+  }
+}
+@include _767 {
+  .content {
+    &__banner_first {
+      height: auto;
+      align-items: flex-end;
+    }
+  }
+  .banner {
+    &__info-block {
+      padding-bottom: 20px;
+    }
+    &__red-block {
+      flex-direction: column;
+    }
+  }
+  .calculator {
+    &__results-block {
+      max-width: 680px;
+    }
+  }
+  .news {
+    &__image-head {
+      gap: 32px;
+      padding: 32PX 24PX;
+    }
+  }
+  .button {
+    &__white {
+      align-items: center;
+    }
+  }
+}
+@include _575 {
+  .default {
+    &__info-block {
+      padding: 16px;
+    }
+  }
+  .content {
+    &__banner {
+      padding: 24px 16px;
+      &_first {
+        padding: 24px 16px 0 16px;
+        flex-direction: column;
+        align-items: center;
+        gap: 8px;
+      }
+    }
+    &__cards {
+      flex-direction: column;
+    }
+    &__card {
+      padding: 16px;
+      &_mini {
+        width: 100%;
+      }
+    }
+  }
+  .results-block {
+    &__buttons {
+      flex-direction: column;
+    }
+    &__bigValue {
+      font-size: 36px;
+    }
+  }
+  .calculator {
+    &__form {
+      padding: 24px 16px;
+    }
+    &__results-block {
+      max-width: 480px;
+      padding: 24px 16px;
+    }
+  }
+  .banner {
+    &__buttons {
+      justify-content: space-between;
+    }
+  }
+  .button {
+    justify-content: center;
+    padding: 24px 12px;
+  }
+  .news {
+    &__container {
+      align-items: center;
+    }
+    &__image-head {
+      height: auto;
+    }
+    &__card {
+      &_small {
+        display: none;
+      }
+      &_big {
+        max-width: 460px;
+      }
+    }
+  }
+}
+@include _480 {
+  .content {
+    &__block {
+      &_platforms-img {
+        flex-direction: column;
+        align-items: center;
+      }
+    }
+  }
+  .calculator {
+    &__results-block {
+      max-width: 350px;
+    }
+  }
+  .news {
+    &__card {
+      &_big {
+        max-width: 370px;
+      }
+    }
+  }
+  .red-block {
+    &__title {
+      font-size: 46px;
+    }
+  }
+}
+@include _380 {
+  .calculator {
+    &__results-block {
+      max-width: 340px;
+    }
+  }
+  .news {
+    &__card {
+      &_big {
+        max-width: 340px;
+      }
     }
   }
 }

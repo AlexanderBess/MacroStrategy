@@ -23,6 +23,33 @@
                 to="/news">News</nuxt-link>
           </div>
           <button class="button button_connect">Connect wallet</button>
+<!--          <div class="container header__container-menu">-->
+<!--            <div class="menu-burger__header">-->
+<!--              <span></span>-->
+<!--            </div>-->
+<!--            <nav class="header__nav">-->
+<!--              <ul class="menu header__menu">-->
+<!--                <li>-->
+<!--                  <nuxt-link-->
+<!--                    class="header__link"-->
+<!--                    :class="$route.name === 'index' ? 'header__link_active' : ''"-->
+<!--                    to="/">Discovery</nuxt-link>-->
+<!--                </li>-->
+<!--                <li>-->
+<!--                  <nuxt-link-->
+<!--                    class="header__link"-->
+<!--                    :class="$route.name === 'buy-bitcoin' ? 'header__link_active' : ''"-->
+<!--                    to="/buy-bitcoin">Buy Bitcoin</nuxt-link>-->
+<!--                </li>-->
+<!--                <li>-->
+<!--                  <nuxt-link-->
+<!--                      class="header__link"-->
+<!--                      :class="$route.name === 'news' ? 'header__link_active' : ''"-->
+<!--                      to="/news">News</nuxt-link>-->
+<!--                </li>-->
+<!--              </ul>-->
+<!--            </nav>-->
+<!--          </div>-->
         </div>
       </div>
       <div class="template__content">
@@ -264,6 +291,72 @@ export default {
   &__block {
     display: flex;
     gap: 16px;
+  }
+}
+
+.container{
+  width: 100%;
+  max-width: 1180px;
+  margin: 0 auto;
+  padding: 10px;
+  position: relative;
+}
+.content-wrapper{
+  width: 100%;
+}
+.header__nav {
+  position: absolute;
+  right: 36px;
+  display: block;
+}
+.header__menu {
+  display: flex;
+  position: relative;
+  z-index: 2;
+}
+.header__menu li {
+  list-style: none;
+  margin: 0px 0px 0px 36px;
+  font-size: 16px;
+  text-transform: uppercase;
+  text-decoration: none;
+}
+.content-wrapper{
+  margin-top: 78px;
+  padding: 10px;
+  line-height: 34px;
+}
+@include _575 {
+  .button_connect {
+    display: none;
+  }
+  .footer {
+    &__container {
+      height: auto;
+    }
+    &__top {
+      flex-direction: column;
+      align-items: center;
+      gap: 8px;
+    }
+  }
+}
+@include _480 {
+  .button_connect {
+    display: block;
+  }
+  .header {
+    &__container {
+      flex-direction: column;
+      align-items: center;
+      gap: 16px;
+    }
+  }
+  .footer {
+    &__bottom {
+      flex-direction: column;
+      gap: 8px;
+    }
   }
 }
 </style>

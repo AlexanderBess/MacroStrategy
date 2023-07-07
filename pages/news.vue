@@ -10,7 +10,7 @@
         <img style="width: 24px; height: 24px;" src="~assets/img/ui/Arrow-Right.svg"/>
       </a>
     </div>
-    <div class="news__content">
+    <div class="news__content news__content_first">
       <div class="news__twit">
         <blockquote class="twitter-tweet">
           <p lang="en" dir="ltr">MicroStrategy has acquired an additional 12,333 BTC for ~$347.0 million at an average price of $28,136 per <a href="https://twitter.com/hashtag/bitcoin?src=hash&amp;ref_src=twsrc%5Etfw">#bitcoin</a>. As of 6/27/23 <a href="https://twitter.com/MicroStrategy?ref_src=twsrc%5Etfw">@MicroStrategy</a> hodls 152,333 <a href="https://twitter.com/search?q=%24BTC&amp;src=ctag&amp;ref_src=twsrc%5Etfw">$BTC</a> acquired for ~$4.52 billion at an average price of $29,668 per bitcoin. <a href="https://twitter.com/search?q=%24MSTR&amp;src=ctag&amp;ref_src=twsrc%5Etfw">$MSTR</a> <a href="https://t.co/joHo1gEnR0">https://t.co/joHo1gEnR0</a>
@@ -28,12 +28,12 @@
       </div>
     </div>
     <div class="news__content">
-<!--      <div class="news__container news__container_small">-->
+      <div class="news__post">
         <newsCard
             v-for="item in newsArrayHalfTwo"
             :card="item"
             mode="big"/>
-<!--      </div>-->
+      </div>
     </div>
     <div class="news__content news__content_wrap">
 <!--      <div class="news__container news__container_small">-->
@@ -43,9 +43,11 @@
 <!--      </div>-->
     </div>
     <div class="news__content">
-      <newsCard
-        :card="newsArrayHalfThree"
-        mode="big"/>
+      <div class="news__post">
+        <newsCard
+          :card="newsArrayHalfThree"
+          mode="big"/>
+      </div>
       <div class="news__container news__container_small">
         <newsCard
           v-for="item in newsArrayThree"
@@ -303,6 +305,44 @@ export default {
     font-style: normal;
     font-weight: 500;
     line-height: 32px;
+  }
+}
+@include _1199{
+  .news {
+    padding: 32px 16px 72px 16px;
+    &__image-head {
+      flex-direction: column;
+      align-items: flex-start;
+      padding: 72px 32px 40px 32px;
+    }
+    &__content {
+      justify-content: space-between;
+      flex-wrap: wrap;
+      &_first {
+        flex-direction: column;
+      }
+    }
+  }
+}
+@include _767 {
+  .news {
+    &__content {
+      align-items: center;
+    }
+    &__image-head {
+      gap: 32px;
+      padding: 32PX 24PX;
+    }
+  }
+}
+@include _575 {
+  .news {
+    &__post {
+      max-width: 378px;
+    }
+    &__image-head {
+      height: auto;
+    }
   }
 }
 </style>

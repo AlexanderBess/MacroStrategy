@@ -335,4 +335,14 @@ export default {
     flex-direction: column;
   }
 }
+@include _575 {
+  .calculator {
+    &__form {
+      padding: 24px 16px;
+    }
+  }
+  .discount-info {
+    padding: 24px 16px
+  }
+}
 </style>
