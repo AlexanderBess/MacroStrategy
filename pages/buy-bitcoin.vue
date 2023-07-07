@@ -11,7 +11,8 @@
               :class="showError ? 'form__input_error' : ''"
               class="form__input"
               @change="calculatedPrice"/>
-          <span class="input__error" v-show="showError">Incorrect values</span>
+          <span class="ctm-input ctm-input__value" v-if="!showError">$ {{ coinsPrice[customCoinType.name] * customValue }}</span>
+          <span class="ctm-input ctm-input__error" v-show="showError">{{ errorText }}</span>
         </div>
         <div class="form__input-block">
           <span class="form__input-label">Currency of purchase</span>
@@ -64,6 +65,7 @@ export default {
   data() {
     return {
       showBuyBitcoin: false,
+      errorText: '',
       defaultSelector: {
         name:'ETH',
         icon: require('assets/img/icon/ETH.svg')
@@ -174,9 +176,15 @@ export default {
     },
     customValue: {
       handler() {
+        this.customValue = this.customValue.replace(/[^.\d]+/g,"").replace( /^([^\.]*\.)|\./g, '$1' );
         this.formingResults();
-        if (this.coinsPrice[this.customCoinType.name] * this.customValue < 50 || this.coinsPrice[this.customCoinType.name] * this.customValue > 5000) {
+        const dollarValue = this.coinsPrice[this.customCoinType.name] * this.customValue;
+        if (dollarValue < 50) {
           this.showError = true;
+          this.errorText = 'You entered an amount less than $50'
+        } else if (dollarValue > 5000) {
+          this.showError = true;
+          this.errorText = 'You entered an amount greater than $5000'
         } else if (this.showError) {
           this.showError = false;
         }
@@ -281,12 +289,18 @@ export default {
     }
   }
 }
-.input__error {
-  color: var(--typo-brand, #D9232E);
+.ctm-input {
+  padding-left: 10px;
   font-size: 16px;
   font-style: normal;
   font-weight: 500;
   line-height: 24px;
+  &__error {
+    color: var(--typo-brand, #D9232E);
+  }
+  &__value {
+    color: #6C8093;
+  }
 }
 .discount-info {
   height: max-content;
