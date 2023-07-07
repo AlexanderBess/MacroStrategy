@@ -273,6 +273,9 @@ export default {
 
     text-decoration: none;
   }
+  &__view-all:hover {
+    background: #E3E5E8;
+  }
   &__view-all-text {
     padding-top: 3px;
     color: var(--control-ghost-typo, #D9232E);

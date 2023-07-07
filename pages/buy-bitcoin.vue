@@ -312,6 +312,9 @@ export default {
 
     background: var(--control-primary-bg-default, #D9232E);
   }
+  &__red:hover {
+    background: var(--control-primary-bg-hover, #E14750);
+  }
   &__white {
     margin-top: 20px;
     width: max-content;
@@ -325,6 +328,9 @@ export default {
     font-style: normal;
     font-weight: 600;
     line-height: 24px;
+  }
+  &__white:hover {
+    background: var(--control-ghost-bg-hover, #E3E5E8);
   }
 }
 @include _991 {

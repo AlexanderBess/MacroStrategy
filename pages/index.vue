@@ -544,6 +544,9 @@ export default {
     border: none;
     background: var(--control-primary-bg-default, #D9232E);
   }
+  &__button:hover {
+    background: var(--control-primary-bg-hover, #E14750);
+  }
   &__info-block {
     display: flex;
     flex-direction: column;
@@ -727,6 +730,9 @@ export default {
 
     text-decoration: none;
   }
+  &__view-all:hover {
+    background: #E3E5E8;
+  }
   &__view-all-text {
     padding-top: 3px;
     color: var(--control-ghost-typo, #D9232E);
@@ -894,6 +900,9 @@ export default {
 
     background: var(--control-primary-bg-default, #D9232E);
   }
+  &__red:hover {
+    background: var(--control-primary-bg-hover, #E14750);
+  }
   &__white {
     display: flex;
 
@@ -904,6 +913,9 @@ export default {
     line-height: 32px;
 
     background: var(--control-ghost-bg-default, #FFF);
+  }
+  &__white:hover {
+    background: var(--control-ghost-bg-hover, #E3E5E8);
   }
 }
 .marquee-container{
