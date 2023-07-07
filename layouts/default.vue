@@ -52,9 +52,9 @@
             </div>
             <div class="buttons__block">
 <!--              <a><img/></a>-->
-              <a href="https://youtube.com"><img src="~assets/img/icon/TwitterRed.svg"/></a>
-              <a href="https://youtube.com"><img src="~assets/img/icon/YoutubeRed.svg"/></a>
-              <a href="https://youtube.com"><img src="~assets/img/icon/TrandingViewRed.svg"/></a>
+              <a target="_blank" href="https://twitter.com/microstrategy"><img src="~assets/img/icon/TwitterRed.svg"/></a>
+              <a target="_blank" href="https://youtube.com/@microstrategy"><img src="~assets/img/icon/YoutubeRed.svg"/></a>
+              <a target="_blank" href="https://www.tradingview.com/symbols/NASDAQ-MSTR/"><img src="~assets/img/icon/TrandingViewRed.svg"/></a>
             </div>
           </div>
           <div class="footer__bottom">

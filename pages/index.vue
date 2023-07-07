@@ -8,7 +8,9 @@
             <span class="banner__desc">MicroStrategy allows you to buy Bitcoin at a lower price and make a profit from it</span>
           </div>
           <div class="banner__buttons">
-            <button class="banner__button">Get started</button>
+            <button
+                class="banner__button"
+              @click="$router.push('/buy-bitcoin')">Get started</button>
             <a
                href="https://twitter.com/microstrategy"
                target="_blank">
@@ -28,13 +30,15 @@
         </div>
         <img src="~assets/img/app/banner.png" alt="banner"/>
       </div>
-      <div class="content__crypto-line">
-        <div class="marquee-container">
-          <p class="marquee">
-            LONDON - PARIS - SYDNEY - TOKYO - NEW YORK - BERLIN - ROME
-          </p>
-        </div>
-      </div>
+<!--      <div class="content__crypto-line">-->
+<!--        <div class="marquee-container">-->
+<!--          <p class="marquee">-->
+<!--            <span v-for="item in coinsData">-->
+<!--              {{item}}-->
+<!--            </span>-->
+<!--          </p>-->
+<!--        </div>-->
+<!--      </div>-->
     </div>
     <div class="content__block">
       <div class="content__32flex">
@@ -135,8 +139,22 @@
     <div class="content__block content__block_calculator">
       <div class="calculator__form">
         <div class="form__title">Calculator</div>
-        <input class="form__title"/>
-        <input class="form__title"/>
+        <div class="form__input-block">
+          <span class="form__input-label">Amount of investment</span>
+          <input
+              v-model="customValue"
+              class="form__input"
+              @change="calculatedPrice"/>
+        </div>
+        <div class="form__input-block">
+          <span class="form__input-label">Currency of purchase</span>
+          <CustomSelect
+              :options="coinsForDD"
+              :default="defaultSelector"
+              class="select"
+              @input="displayToKey($event)"
+          />
+        </div>
       </div>
       <div class="calculator__results-block">
         <div class="results-block__info">
@@ -150,11 +168,15 @@
         </div>
         <div class="results-block__result">
           <span class="results-block__name">You will get:</span>
-          <span class="results-block__bigValue">0.0000001 BTC</span>
+          <span class="results-block__bigValue">{{ calcBTC }} BTC</span>
         </div>
         <div class="results-block__buttons">
-          <button class="button button__red">Buy bitcoin</button>
-          <button class="button button__white">Increase the discount<img src="~assets/img/ui/Arrow-Right.svg"/></button>
+          <button
+            class="button button__red"
+            @click="openBuyBitcoin()">Buy bitcoin</button>
+          <button
+            class="button button__white"
+            @click="openDiscount()">Increase the discount<img src="~assets/img/ui/Arrow-Right.svg"/></button>
         </div>
       </div>
     </div>
@@ -168,7 +190,7 @@
       </div>
       <div class="news__image-head">
         <span class="image-head__text">Bitcoin is a bank in cyberspace, run by incorruptible software, offering a global, affordable, simple, & secure savings account to billions of people that don't have the option or desire to run their own hedge fund.</span>
-        <a class="news__view-all" href="https://youtube.com">
+        <a class="news__view-all" target="_blank" href="https://www.youtube.com/watch?v=vveGfIfoDkc&ab_channel=OnlyTheSAVVY">
           <span class="news__view-all-text">Watch the video</span>
           <img style="width: 24px; height: 24px;" src="~assets/img/ui/Arrow-Right.svg"/>
         </a>
@@ -196,18 +218,89 @@
         </div>
       </div>
     </div>
+    <DiscountModal
+        v-if="showDiscount"
+        @close="closeDiscount"/>
+    <BuyBitcoin
+      v-if="showBuyBitcoin"
+      @close="closeBuyBitcoin"/>
   </div>
 </template>
-<script async src="https://platform.twitter.com/widgets.js" charset="utf-8">
+
+<script>
+
 import newsCard from "/components/newsCard"
+import CustomSelect from "/components/customDD"
+import DiscountModal from "/components/modals/discount"
+import {mapGetters} from "vuex";
+import Discount from "/components/modals/discount";
+import BuyBitcoin from "/components/modals/buyBitcoin";
 
 export default {
   name: 'Main',
   components: {
-    newsCard
+    Discount,
+    newsCard,
+    DiscountModal,
+    BuyBitcoin,
+    CustomSelect
   },
   data() {
     return {
+      showDiscount: false,
+      showBuyBitcoin: false,
+      defaultSelector: {
+        name:'ETH',
+        icon: require('assets/img/icon/ETH.svg')
+      },
+      customValue: 0.001,
+      calcBTC: 0.000001,
+      customCoinType: {
+        name: 'ETH'
+      },
+      coinsLine: [
+        {
+          icon: '',
+          price: '$30000'
+        },
+      ],
+      coinsForDD: [
+        {
+          name: 'ETH',
+          icon: require('assets/img/icon/ETH.svg'),
+          fullname: 'Ethereum'
+        },
+        {
+          name: 'LTC',
+          icon: require('assets/img/icon/LTC.svg'),
+          fullname: 'Litecoin'
+        },
+        {
+          name: 'USDT',
+          icon: require('assets/img/icon/USDT.svg'),
+          fullname: 'Tether'
+        },
+        {
+          name: 'BNB',
+          icon: require('assets/img/icon/BNB.svg'),
+          fullname: 'Binance Coin'
+        },
+        {
+          name: 'ADA',
+          icon: require('assets/img/icon/ADA.svg'),
+          fullname: 'Cardano'
+        },
+        {
+          name: 'TRX',
+          icon: require('assets/img/icon/TRX.svg'),
+          fullname: 'TRON'
+        },
+        {
+          name: 'XRP',
+          icon: require('assets/img/icon/XRP.svg'),
+          fullname: 'XRP'
+        }
+      ],
       calculationResults: [
         {
           name: 'Bitcoin exchange rate:',
@@ -246,9 +339,56 @@ export default {
         date: 'Nov 3, 2022'
       }
     }
+  },
+  computed: {
+    ...mapGetters({
+      coinsData: 'getCoinsData',
+      coinsPrice: 'getCoinsPrice'
+    })
+  },
+  async beforeMount() {
+    await this.$store.dispatch('getCoinsData');
+    await this.$store.dispatch('getCoinsPrice');
+  },
+  methods: {
+    displayToKey(value) {
+      this.customCoinType = value;
+      this.calculationResults[2].value = `${this.customValue} ${this.customCoinType.name}`;
+      this.btcPrice();
+    },
+    calculatedPrice() {
+      this.calculationResults[0].value = `$${this.coinsPrice.BTC}` || '30000';
+      this.calculationResults[2].value = `${this.customValue} ${this.customCoinType.name}` || 'asd';
+      this.btcPrice();
+    },
+    btcPrice() {
+      this.calcBTC = ((this.coinsPrice[this.customCoinType.name] * this.customValue) + ((this.coinsPrice[this.customCoinType.name] * this.customValue) * 0.27)) / this.coinsPrice.BTC;
+    },
+    openDiscount() {
+      this.showDiscount = !this.showDiscount;
+    },
+    openBuyBitcoin() {
+      this.showBuyBitcoin = !this.showDiscount;
+    },
+    closeDiscount() {
+      this.showDiscount = false;
+    },
+    closeBuyBitcoin() {
+      this.showBuyBitcoin = false;
+    }
+  },
+  watch: {
+    coinsPrice: {
+      handler() {
+        this.calculationResults[0].value = `$${this.coinsPrice.BTC}`;
+        this.calculationResults[2].value = `${this.customValue} ${this.customCoinType.name}`;
+        this.btcPrice();
+      }
+    }
   }
 };
 </script>
+
 <style lang="scss" scoped>
 .content {
   display: flex;
@@ -659,6 +799,29 @@ export default {
     font-weight: 700;
     line-height: 64px;
   }
+  &__input {
+    padding: 12px 24px;
+    border-radius: 12px 12px 16px 16px;
+    border: 2px solid var(--bg-border, rgba(108, 128, 147, 0.25));
+
+    color: var(--typo-primary, #171A1C);
+    font-size: 20px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: 32px;
+  }
+  &__input-block {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+  }
+  &__input-label {
+    color: var(--typo-secondary, #6C8093);
+    font-size: 20px;
+    font-style: normal;
+    font-weight: 500;
+    line-height: 32px;
+  }
 }
 .results-block {
   &__info {
@@ -748,9 +911,9 @@ export default {
   white-space: nowrap;
   animation: marquee 3.5s infinite linear; /* notice the infinite */
 }
-.marquee:after{
-  content: "LONDON - PARIS - SYDNEY - TOKYO - NEW YORK - BERLIN - ROME";
-}
+//.marquee:after{
+//  content: "LONDON - PARIS - SYDNEY - TOKYO - NEW YORK - BERLIN - ROME";
+//}
 @keyframes marquee{
   0% {
     transform: translateX(0)
@@ -762,6 +925,13 @@ export default {
 @include _1199 {
   .content {
     padding: 32px 16px 72px 16px;
+  }
+  .news {
+    &__image-head {
+      flex-direction: column;
+      align-items: flex-start;
+      padding: 72px 32px 40px 32px;
+    }
   }
 }
 </style>

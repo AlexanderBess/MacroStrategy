@@ -5,7 +5,7 @@
     </div>
     <div class="news__image-head">
       <span class="image-head__text">Bitcoin is a bank in cyberspace, run by incorruptible software, offering a global, affordable, simple, & secure savings account to billions of people that don't have the option or desire to run their own hedge fund.</span>
-      <a class="news__view-all" href="https://youtube.com">
+      <a class="news__view-all" target="_blank" href="https://www.youtube.com/watch?v=vveGfIfoDkc&ab_channel=OnlyTheSAVVY">
         <span class="news__view-all-text">Watch the video</span>
         <img style="width: 24px; height: 24px;" src="~assets/img/ui/Arrow-Right.svg"/>
       </a>
@@ -61,9 +61,13 @@
   </div>
 </template>
 
-<script async src="https://platform.twitter.com/widgets.js" charset="utf-8">
+<script>
+import newsCard from "/components/newsCard"
 export default {
   name: "news",
+  components: {
+    newsCard
+  },
   data() {
     return {
       newsArrayOne: [

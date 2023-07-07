@@ -12,8 +12,13 @@ export default {
         content: 'description',
       },
     ],
+    script: [
+      {
+        src: 'https://platform.twitter.com/widgets.js'
+      }
+    ],
     link: [
-      { rel: 'icon', type: 'image/x-icon', href: '/img/app/favicon.svg' },
+      { rel: 'icon', type: 'image/x-icon', href: '/favicon.svg' },
     ],
   },
   css: [
@@ -40,7 +45,8 @@ export default {
     productionSourceMap: false,
     productionGzip: true,
     productionGzipExtensions: ['js', 'css', 'svg'],
-    extend(config) {
+    extend(config, { isClient }) {
+      if (isClient) { config.optimization.splitChunks.maxSize = 100000 }
       config.node = { fs: 'empty' };
     },
     transpile: [
@@ -50,5 +56,8 @@ export default {
       compact: false,
     },
     postcss: null,
+  },
+  axios: {
+    baseURL: process.env.API
   }
 };
