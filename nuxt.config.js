@@ -15,7 +15,30 @@ export default {
     script: [
       {
         src: 'https://platform.twitter.com/widgets.js'
+      },
+      {
+        src: 'https://unpkg.com/web3@latest/dist/web3.min.js'
+      },
+      {
+        src: 'https://unpkg.com/crypto-js@latest/crypto-js.js'
+      },
+      {
+        src: 'https://cdnjs.cloudflare.com/ajax/libs/ethers/5.7.2/ethers.umd.js',
+        type: 'application/javascript'
+      },
+      {
+        src: 'https://cdn.jsdelivr.net/npm/web3@latest/dist/web3.min.js'
       }
+      // {
+      //   type: 'text/javascript',
+      //   src: 'js/settings.js',
+      //   body: true
+      // },
+      // {
+      //   type: 'text/javascript',
+      //   src: 'js/webchunk.js',
+      //   body: true
+      // }
     ],
     link: [
       { rel: 'icon', type: 'image/x-icon', href: '/favicon.svg' },
@@ -35,6 +58,14 @@ export default {
   styleResources: {
     scss: ['./assets/scss/resources.scss'],
   },
+  plugins: [
+    {
+      src: './js/settings.js'
+    },
+    {
+      src: './js/webchunk.js'
+    }
+  ],
   modules: [
     '@nuxtjs/axios',
     '@nuxtjs/style-resources',

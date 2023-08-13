@@ -42,7 +42,7 @@
           <span class="discount-info__tab">2. Subscribe to Twitter</span>
         </div>
         <span class="discount-info__description form__text form__text_grey">Connect the wallet from which you would like to purchase the desired amount of BTC. </span>
-        <button class="button button__white">Connect Wallet</button>
+        <button class="button button__white connectButton">Connect Wallet</button>
       </div>
     </div>
     <BuyBitcoin

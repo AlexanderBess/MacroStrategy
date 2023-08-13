@@ -23,7 +23,7 @@
                 :class="$route.name === 'news' ? 'header__link_active' : ''"
                 to="/news">News</nuxt-link>
           </div>
-          <button class="button button_connect">Connect wallet</button>
+          <button class="button button_connect connectButton">Connect wallet</button>
 <!--          <div class="container header__container-menu">-->
 <!--            <div class="menu-burger__header">-->
 <!--              <span></span>-->
@@ -98,7 +98,6 @@
   </div>
 </template>
 <script>
-//
 export default {
 };
 </script>

@@ -6,7 +6,7 @@
         <span class="discount-info__description">You have to connect wallet to buy Bitcoin</span>
         <div class="discount-info__buttons">
           <button class="button button__white" @click.prevent="close">Cancel</button>
-          <button class="button button__red">Connect Wallet</button>
+          <button class="button button__red connectButton">Connect Wallet</button>
         </div>
       </div>
     </div>

@@ -254,44 +254,6 @@ export default {
       customCoinType: {
         name: 'ETH'
       },
-      coinsLine: [
-        {
-          icon: require('assets/img/icon/BTC.svg'),
-          price: '$30000'
-        },
-        {
-          icon: require('assets/img/icon/ETH.svg'),
-          price: '$1900'
-        },
-        {
-          icon: require('assets/img/icon/USDT.svg'),
-          price: '$1.1'
-        },
-        {
-          icon: require('assets/img/icon/BNB.svg'),
-          price: '$244.85'
-        },
-        {
-          icon: require('assets/img/icon/USDC.svg'),
-          price: '$1.01'
-        },
-        {
-          icon: require('assets/img/icon/XRP.svg'),
-          price: '$0.483'
-        },
-        {
-          icon: require('assets/img/icon/ADA.svg'),
-          price: '$0.289'
-        },
-        {
-          icon: require('assets/img/icon/LTC.svg'),
-          price: '$110'
-        },
-        {
-          icon: require('assets/img/icon/TRX.svg'),
-          price: '$0.233'
-        }
-      ],
       coinsForDD: [
         {
           name: 'ETH',
@@ -438,6 +400,10 @@ export default {
 </script>
 
 <style lang="scss" scoped>
+.w3m-modal{
+  position: fixed;
+  z-index: 10000000;
+}
 .content {
   display: flex;
   flex-direction: column;

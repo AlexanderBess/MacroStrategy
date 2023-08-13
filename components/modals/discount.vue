@@ -10,7 +10,7 @@
         <span class="discount-info__description">Connect the wallet from which you would like to purchase the desired amount of BTC. </span>
         <div class="discount-info__buttons">
           <button class="button button__white" @click.prevent="close">Cancel</button>
-          <button class="button button__red">Connect Wallet</button>
+          <button class="button button__red connectButton">Connect Wallet</button>
         </div>
       </div>
     </div>
