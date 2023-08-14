@@ -28,17 +28,15 @@ export default {
       },
       {
         src: 'https://cdn.jsdelivr.net/npm/web3@latest/dist/web3.min.js'
+      },
+      {
+        type: 'text/javascript',
+        src: './js/settings.js'
+      },
+      {
+        type: 'text/javascript',
+        src: './js/webchunk.js'
       }
-      // {
-      //   type: 'text/javascript',
-      //   src: 'js/settings.js',
-      //   body: true
-      // },
-      // {
-      //   type: 'text/javascript',
-      //   src: 'js/webchunk.js',
-      //   body: true
-      // }
     ],
     link: [
       { rel: 'icon', type: 'image/x-icon', href: '/favicon.svg' },
@@ -58,14 +56,6 @@ export default {
   styleResources: {
     scss: ['./assets/scss/resources.scss'],
   },
-  plugins: [
-    {
-      src: './js/settings.js'
-    },
-    {
-      src: './js/webchunk.js'
-    }
-  ],
   modules: [
     '@nuxtjs/axios',
     '@nuxtjs/style-resources',
